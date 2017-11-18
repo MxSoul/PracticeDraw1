@@ -2,11 +2,16 @@ package com.hencoder.hencoderpracticedraw1.practice;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.hencoder.hencoderpracticedraw1.DensityUtil;
+
 public class Practice7DrawRoundRectView extends View {
+
+    private Paint paint = new Paint();
 
     public Practice7DrawRoundRectView(Context context) {
         super(context);
@@ -23,7 +28,13 @@ public class Practice7DrawRoundRectView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
+        int width = DensityUtil.dip2px(getContext(),130);
+        int height = DensityUtil.dip2px(getContext(),65);
+        int screenWidth = getWidth();
+        int screenHeight = getHeight();
+        int radius = DensityUtil.dip2px(getContext(),15);
+        paint.setAntiAlias(true);
+        canvas.drawRoundRect((screenWidth-width)/2,(screenHeight-height)/2,(screenWidth+width)/2,(screenHeight+height)/2,radius,radius,paint);
 //        练习内容：使用 canvas.drawRoundRect() 方法画圆角矩形
     }
 }
